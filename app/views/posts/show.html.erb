@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @post.body %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+
+
+<div id="comments">
+		<h2><%= @post.comments.count %> Comments</h2>
+		<%= render @post.comments %>
+
+		<h3>Add a comment:</h3>
+		<%= render "comments/form" %>
+</div>
