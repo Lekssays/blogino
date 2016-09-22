@@ -1,11 +1,30 @@
-<div class="comment clearfix">
-	<div class="comment_content">
-		<p class="comment_name"><strong><%= comment.name %></strong></p>
-		<p class="comment_body"><%= comment.body %></p>
-		<p class="comment_time"><%= time_ago_in_words(comment.created_at) %> Ago</p>
-	</div>
 
-	<% if user_signed_in? %>
-	<p><%= link_to 'Delete', [comment.post, comment],method: :delete, class: "button", data: { confirm: 'Are you sure?' } %></p>
- 	<% end %>
+
+<div class="col s12 m8 offset-m2 l6 offset-l3">
+<div class="card-panel grey lighten-5 z-depth-1">
+  <div class="row valign-wrapper">
+    <div class="col s12">
+      <span class="black-text">
+      	<strong>
+      		<h5><%= comment.name %></h5>
+      	</strong>
+      </span>
+      <span class="black-text"> 
+      	<%= comment.body %>
+      </span>
+      <br>
+      <span class="black-text"> 
+      	<%= time_ago_in_words(comment.created_at) %> ago
+      </span>
+    </div>
+  </div>
 </div>
+</div>
+
+<% if user_signed_in? %>
+<%= link_to 'Delete', [comment.post, comment],method: :delete, class: "button", data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn" %>
+	<% end %>
+
+		
+		
+		

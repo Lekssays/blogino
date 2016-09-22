@@ -1,7 +1,4 @@
-<script type="text/javascript" src="/assets/javascripts/ckeditor.js"></script>
-<script type="text/javascript">
-    CKEDITOR.replace("editor1");
-</script>
+
 <%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
@@ -23,6 +20,7 @@
     <%= f.label :body %><br>
     <%= f.text_area :body %>
   </div>
+  <%= f.file_field :image %>
   <div class="actions">
     <%= f.submit %>
   </div>

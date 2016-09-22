@@ -26,7 +26,8 @@ gem 'materialize-sass'
 gem 'rails_admin', '~> 1.0'
 gem 'cancancan', '~> 1.10'
 gem 'ckeditor'
-gem 'paperclip'
+gem "paperclip", "~> 5.0.0"
+gem 'acts-as-taggable-on', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

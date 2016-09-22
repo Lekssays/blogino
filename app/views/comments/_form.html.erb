@@ -1,17 +1,28 @@
-<script type="text/javascript" src="/assets/javascripts/ckeditor.js"></script>
-<script type="text/javascript">
-    CKEDITOR.replace("editor1");
-</script>
+<div class="row">
 <%= form_for([@post, @post.comments.build]) do |f| %>
-	<%= f.label :name %><br>
-	<%= f.text_field :name %><br>
-	<br>
-	<%= f.label :email %><br>
-	<%= f.text_area :email %><br>
-	<br>
-	<br>
-	<%= f.label :body %><br>
-	<%= f.text_area :body %><br>
-	<br>
-	<%= f.submit "Comment" %>
+<form class="col s12">
+  <div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+    	<%= f.text_field :name, placeholder: "Full name...", type: "text", class: "validate" %>
+      <label for="first_name">Full Name</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">email</i>
+      <%= f.text_field :email, placeholder: "Email...", type: "email", class: "validate" %>
+      <label for="email">Email</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+    	<i class="material-icons prefix">mode_edit</i>
+    	<%= f.text_field :body, placeholder: "Share what's in your mind...", type: "text", class: "validate" %>
+      <label for="body">Body</label>
+    </div>
+  </div> 
+  <%= f.submit "Comment", class: "waves-effect waves-light btn" %>    
+</form>
 <% end %>
+</div>
