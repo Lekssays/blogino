@@ -1,0 +1,53 @@
+<div class="container">
+<div class="col s12 m8 offset-m2 l6 offset-l3">
+<div class="card-panel grey lighten-5 z-depth-1">
+  <div class="row valign-wrapper">
+    <div class="col s12">
+      <h5>
+        <i class="material-icons prefix">note_add</i>
+        Edit Post:
+      </h5>
+      <%= form_for(@post) do |f| %>
+        <% if @post.errors.any? %>
+          <div id="error_explanation">
+          <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+          <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+          </div>
+        <% end %>
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+              <i class="material-icons prefix">account_circle</i>
+            <%= f.text_field :title, type: "text", class: "validate" %>
+            <label for="first_name">Title</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">mode_edit</i>
+            <%= f.text_area :body, type: "text", class: "materialize-textarea" %>
+            <label for="body">Body</label>
+          </div>
+        </div> 
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>Upload Picture</span>
+              <input type="file">
+            </div>
+            <div class="file-path-wrapper">
+              <%= f.file_field :image, type: "text", class: "file-path validate" %>
+            </div>
+          </div>
+        <%= f.submit "Edit", class: "waves-effect waves-light btn" %>    
+      </form>
+      <% end %>      
+    </div>
+  </div>
+</div>
+</div>
+<%= link_to 'Back', posts_path, class: "waves-effect waves-light btn" %>
+</div>

@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-
-      
 <div class="container">
   <% @posts.each do |post| %>
     <div class="col s12 m7">
@@ -17,8 +15,9 @@
         </div>
       </div>
     </div>
-    
-    <a><%= link_to 'Edit', edit_post_path(post), class: "waves-effect waves-light btn" %></a>
-    <a><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn" %></a> 
+    <% if user_signed_in? %>
+      <a><%= link_to 'Edit', edit_post_path(post), class: "waves-effect waves-light btn" %></a>
+      <a><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn red darken-4" %></a> 
+    <% end %>
   <% end %>
 </div>

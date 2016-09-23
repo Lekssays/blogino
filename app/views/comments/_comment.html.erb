@@ -15,13 +15,14 @@
       	<%= time_ago_in_words(comment.created_at) %> ago
       </span>
     </div>
+      <% if user_signed_in? %>
+      <%= link_to 'Delete', [comment.post, comment],method: :delete, class: "button", data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn red darken-4" %>
+      <% end %>
   </div>
 </div>
 </div>
 
-<% if user_signed_in? %>
-<%= link_to 'Delete', [comment.post, comment],method: :delete, class: "button", data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn" %>
-	<% end %>
+
 
 		
 		

@@ -9738,3 +9738,1013 @@ Processing by PostsController#index as HTML
   [1m[36mPost Load (1.2ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
   Rendered posts/index.html.erb within layouts/application (4.1ms)
 Completed 200 OK in 151ms (Views: 149.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 18:08:59 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 1074ms (Views: 1045.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 18:12:06 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 124ms (Views: 122.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 18:12:13 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (2.2ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (18.4ms)
+  Rendered comments/_form.html.erb (6.3ms)
+  Rendered posts/show.html.erb within layouts/application (60.2ms)
+Completed 200 OK in 183ms (Views: 166.7ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 18:12:28 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 129ms (Views: 127.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-23 18:12:35 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 158ms (Views: 139.9ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-09-23 18:12:37 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pGli1waonWLH7nkJtx2co+5PY0vrZFncBLpOyc4mx8ZXk5j/HnpBX1SYz5O07VRZzb7Xa812isnBVlGOveLeew==", "user"=>{"email"=>"admin@blog.ma", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'admin@blog.ma'  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.2ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2016-09-22 22:20:09', `current_sign_in_at` = '2016-09-23 17:12:37', `sign_in_count` = 3, `updated_at` = '2016-09-23 17:12:37' WHERE `users`.`id` = 1
+  [1m[36m (43.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 220ms (ActiveRecord: 46.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 18:12:37 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 169ms (Views: 167.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 18:13:01 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 128ms (Views: 126.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 18:15:23 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (2.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered comments/_comment.html.erb (3.0ms)
+  Rendered comments/_form.html.erb (7.8ms)
+  Rendered posts/show.html.erb within layouts/application (16.8ms)
+Completed 200 OK in 153ms (Views: 145.2ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2016-09-23 18:53:24 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (0.8ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1
+  [1m[36m (1.9ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 4[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (1.2ms)
+  Rendered posts/show.html.erb within layouts/application (8.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 120ms (Views: 114.8ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 18:53:42 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 129ms (Views: 126.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 18:53:51 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.6ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered comments/_comment.html.erb (2.5ms)
+  Rendered comments/_form.html.erb (1.3ms)
+  Rendered posts/show.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 153ms (Views: 148.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 18:56:10 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.5ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.7ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered comments/_comment.html.erb (6.5ms)
+  Rendered comments/_form.html.erb (1.7ms)
+  Rendered posts/show.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 152ms (Views: 144.6ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:05:48 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.6ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (1.1ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered comments/_comment.html.erb (3.1ms)
+  Rendered comments/_form.html.erb (2.5ms)
+  Rendered posts/show.html.erb within layouts/application (17.9ms)
+Completed 200 OK in 142ms (Views: 135.3ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:06:14 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.8ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered comments/_comment.html.erb (3.6ms)
+  Rendered comments/_form.html.erb (1.4ms)
+  Rendered posts/show.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 124ms (Views: 120.6ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:06:18 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered comments/_comment.html.erb (2.1ms)
+  Rendered comments/_form.html.erb (1.0ms)
+  Rendered posts/show.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 129ms (Views: 125.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:06:42 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.2ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered comments/_comment.html.erb (3.0ms)
+  Rendered comments/_form.html.erb (1.2ms)
+  Rendered posts/show.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 133ms (Views: 130.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:06:56 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.5ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.6ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered comments/_comment.html.erb (3.4ms)
+  Rendered comments/_form.html.erb (1.4ms)
+  Rendered posts/show.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 130ms (Views: 127.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:07:28 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.9ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered comments/_comment.html.erb (3.5ms)
+  Rendered comments/_form.html.erb (1.2ms)
+  Rendered posts/show.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 160ms (Views: 156.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:08:23 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (3.8ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.2ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered comments/_comment.html.erb (2.0ms)
+  Rendered comments/_form.html.erb (1.4ms)
+  Rendered posts/show.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 125ms (Views: 118.0ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:09:14 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.6ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (0.6ms)
+  Rendered comments/_form.html.erb (1.0ms)
+  Rendered posts/show.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 133ms (Views: 129.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2016-09-23 19:11:07 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (5.4ms)
+  Rendered posts/new.html.erb within layouts/application (9.3ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Completed 200 OK in 150ms (Views: 148.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2016-09-23 19:13:22 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (1.0ms)
+  Rendered posts/new.html.erb within layouts/application (3.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 130ms (Views: 126.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 19:13:28 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 142ms (Views: 140.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 19:20:27 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 123ms (Views: 121.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-23 19:20:32 +0100
+Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (1.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 8ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 19:20:32 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 126ms (Views: 124.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-23 19:20:37 +0100
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 19:20:37 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 122ms (Views: 120.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.7ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 147ms (Views: 146.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.self-4141cff2f9a294da1f38c5862b65db7705887252415789395a2ee242a55a624a.css?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/ckeditor.self-1cd98bc4d27226858c2de4129e72f5463a0f8149affb1e95523b24fe8ea05e8c.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/build-config.self-c3e238e2c32e803ad364400a647a827ce6b063d54a98c570d9ce692892f2b37b.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/config.self-5736cb9692ec4d0ede3e3836a78ff4f595d120cdf2ea063d822710125e819103.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/styles.self-36a4fb10ee6ad2114809648ab688038aa1a4b8c445ea23dbc029ca60c4ea7b3a.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/initial.self-79f269ead2aeaa809299033919f9128fa0d9700d0248cad0dcd6442ce43dc389.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/jquery.easing.1.3.self-0170bc905fbddc075a56bdccce1be6a58f3713a14137b607ba9bd9f96fd7835f.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/animation.self-a1028b0bcf2e26331bedf7b90e81103f0707e69fdec488aa951de94b51987767.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/velocity.min.self-5adbb81af5c205a959e06198156b4b31fcd57f02c592e3fb096d7b74e8f401a6.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/hammer.min.self-bf8bdb0953b1a135f96716e362e1f7a8e64168c914fa77ca31973bb70e57a731.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/jquery.hammer.self-73fd69102f356b9abfc9ee242b19895f62454f42cfcfa1f066be71d2c8f41c7a.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/global.self-90649deff3358499c5859330da1363eea3e2bef75c80df5940f3894778f95027.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/collapsible.self-4c13fea644257c8f9384721f7d3bc27bced51754ddf3602b56093e2450a5d9c2.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/dropdown.self-9cc5a781f54a4e273cde4a9d213ac101bf5875aaf02ee6e4abf1e43be84e747d.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/materialbox.self-8572736f9d17261189da8a9fc91555d63b29498f4f8665328e28261c7c4cdb68.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/leanModal.self-075befa387f6509a7504fc07beafcc796c44969652edcb2d71eedffd8e2ace01.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/parallax.self-7ac34f0f3dcef83deee116ea473a2770cec13e07c8e0dcce08cc2372bbe295d3.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/tabs.self-7f70bb766a49a1ad704b8f5988610277c8ec224c4d122cbea69e9309e6796d48.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/tooltip.self-7de1b1d9042095a500be33ae68b9c7541dee8adf8ffa47bff413b87ab330fe63.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/waves.self-26e9b9cfaa9ccbc292ed510f654bd279d69695f5337a14c9800b36e92f96735b.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/toasts.self-1eaa9f33c4c3b83f381997876ba6ac53899a5ca72a6b401708c32625fc553adc.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/sideNav.self-de5e615b7a32eb9e55ffc9573e4186ef01339badef5ecb1f3f6d591686f49ac8.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/scrollspy.self-5da2f9f196dc8f650ace037d487312180c62dc268dd19f45728c116284134207.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/forms.self-d9743bd4515fb298375d55740daf85a261d1aa2e15a741cd1f609a38d833fc71.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/slider.self-b650f99d1b28549db2e7d5b078540fa65aabbb2548e0a378a85cc6b4285fe438.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/cards.self-896c5463a922395c54787a06d69191fbbbbb8bff604b577f505b2da80d9e5e1a.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/chips.self-f132c07f55be9466a02329f8686ccaa06c011000aa9c975279debc158feed7a8.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/pushpin.self-b6217071e4b33cf2ce5742d81537d6f36b046c5f8fd115a01e4239cff1acd598.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/buttons.self-fc0951c300b1984a00694eabc8c451531be448d646ac073b05e4d2fbf7209302.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/transitions.self-fd67a28daa2e92c441a55cdda3d20b34a7e5c5fbb9c6d62ca2aeba52b3ed93a3.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/scrollFire.self-51d8aca762cd14871dbf39aad2bc0213e799f1aa314e75c267fdfd92cfd87e0e.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/date_picker/picker.self-7a9d1216fe1172f8e8fd78fb86cfd4da25c909ebd6983cba5da20817d437d92b.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/date_picker/picker.date.self-5924b278beda2df8570f137f72b37e2d0f516acbc11a0994d1abb74380f078ef.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/character_counter.self-8bb854e15067a96db5bff6896d1d9435e4df83cf5bf6877a1d606940661d2588.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/carousel.self-5f77aa051ee2f35168c30e604c294173a3d9c9f19ac5b6dc0a3c9cf0ea39c697.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize-sprockets.self-1374c0ecff9f5520ea4a144c5754ae434cfea5ca52ec9af6e9916f20bd9275ed.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/materialize/extras/nouislider.self-18d2d5ad521555c564cc69b1c153247aedf8c99609e154dc0bf963a5b3d7ede1.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/ckeditor/init.self-2f3e80b764bc18c9362e6f3326e1f32d4a8bdceff67345a3453a93b111626ff3.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:44 +0100
+
+
+Started GET "/assets/ckeditor/ckeditor.self-3bf56bf393bee65859bc77ba70e26a11bb7e07f0991ba908d1e9a37446e7022b.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:45 +0100
+
+
+Started GET "/assets/application.self-10ad0916cf31256fe71785e8dc9cc297a96b1cdf7b74aeb61711199b9a3d003f.js?body=1" for 127.0.0.1 at 2016-09-23 19:20:45 +0100
+
+
+Started GET "/assets/roboto/Roboto-Regular-b5c9c23bd12593523a46d79dd0aee80e3226bbde4c9ac05fc30a95e2c1510de0.woff2" for 127.0.0.1 at 2016-09-23 19:20:45 +0100
+
+
+Started GET "/assets/roboto/Roboto-Light-94a0ac8d73bb60a9cbe27a4fa36669104f6ffa37c8ff2df29313a6c0d3b64a75.woff2" for 127.0.0.1 at 2016-09-23 19:20:45 +0100
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-23 19:20:49 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 136ms (Views: 135.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 19:23:19 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 147ms (Views: 146.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.self-4141cff2f9a294da1f38c5862b65db7705887252415789395a2ee242a55a624a.css?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/build-config.self-c3e238e2c32e803ad364400a647a827ce6b063d54a98c570d9ce692892f2b37b.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/ckeditor.self-1cd98bc4d27226858c2de4129e72f5463a0f8149affb1e95523b24fe8ea05e8c.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/config.self-5736cb9692ec4d0ede3e3836a78ff4f595d120cdf2ea063d822710125e819103.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/styles.self-36a4fb10ee6ad2114809648ab688038aa1a4b8c445ea23dbc029ca60c4ea7b3a.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/initial.self-79f269ead2aeaa809299033919f9128fa0d9700d0248cad0dcd6442ce43dc389.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/jquery.easing.1.3.self-0170bc905fbddc075a56bdccce1be6a58f3713a14137b607ba9bd9f96fd7835f.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/animation.self-a1028b0bcf2e26331bedf7b90e81103f0707e69fdec488aa951de94b51987767.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/global.self-90649deff3358499c5859330da1363eea3e2bef75c80df5940f3894778f95027.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/hammer.min.self-bf8bdb0953b1a135f96716e362e1f7a8e64168c914fa77ca31973bb70e57a731.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/jquery.hammer.self-73fd69102f356b9abfc9ee242b19895f62454f42cfcfa1f066be71d2c8f41c7a.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/velocity.min.self-5adbb81af5c205a959e06198156b4b31fcd57f02c592e3fb096d7b74e8f401a6.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/collapsible.self-4c13fea644257c8f9384721f7d3bc27bced51754ddf3602b56093e2450a5d9c2.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/dropdown.self-9cc5a781f54a4e273cde4a9d213ac101bf5875aaf02ee6e4abf1e43be84e747d.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/leanModal.self-075befa387f6509a7504fc07beafcc796c44969652edcb2d71eedffd8e2ace01.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/parallax.self-7ac34f0f3dcef83deee116ea473a2770cec13e07c8e0dcce08cc2372bbe295d3.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/materialbox.self-8572736f9d17261189da8a9fc91555d63b29498f4f8665328e28261c7c4cdb68.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/tabs.self-7f70bb766a49a1ad704b8f5988610277c8ec224c4d122cbea69e9309e6796d48.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/waves.self-26e9b9cfaa9ccbc292ed510f654bd279d69695f5337a14c9800b36e92f96735b.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/toasts.self-1eaa9f33c4c3b83f381997876ba6ac53899a5ca72a6b401708c32625fc553adc.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/scrollspy.self-5da2f9f196dc8f650ace037d487312180c62dc268dd19f45728c116284134207.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/tooltip.self-7de1b1d9042095a500be33ae68b9c7541dee8adf8ffa47bff413b87ab330fe63.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/sideNav.self-de5e615b7a32eb9e55ffc9573e4186ef01339badef5ecb1f3f6d591686f49ac8.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/forms.self-d9743bd4515fb298375d55740daf85a261d1aa2e15a741cd1f609a38d833fc71.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/cards.self-896c5463a922395c54787a06d69191fbbbbb8bff604b577f505b2da80d9e5e1a.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/chips.self-f132c07f55be9466a02329f8686ccaa06c011000aa9c975279debc158feed7a8.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/buttons.self-fc0951c300b1984a00694eabc8c451531be448d646ac073b05e4d2fbf7209302.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/slider.self-b650f99d1b28549db2e7d5b078540fa65aabbb2548e0a378a85cc6b4285fe438.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/pushpin.self-b6217071e4b33cf2ce5742d81537d6f36b046c5f8fd115a01e4239cff1acd598.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/transitions.self-fd67a28daa2e92c441a55cdda3d20b34a7e5c5fbb9c6d62ca2aeba52b3ed93a3.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/scrollFire.self-51d8aca762cd14871dbf39aad2bc0213e799f1aa314e75c267fdfd92cfd87e0e.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/date_picker/picker.self-7a9d1216fe1172f8e8fd78fb86cfd4da25c909ebd6983cba5da20817d437d92b.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/character_counter.self-8bb854e15067a96db5bff6896d1d9435e4df83cf5bf6877a1d606940661d2588.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/date_picker/picker.date.self-5924b278beda2df8570f137f72b37e2d0f516acbc11a0994d1abb74380f078ef.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/carousel.self-5f77aa051ee2f35168c30e604c294173a3d9c9f19ac5b6dc0a3c9cf0ea39c697.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize-sprockets.self-1374c0ecff9f5520ea4a144c5754ae434cfea5ca52ec9af6e9916f20bd9275ed.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/materialize/extras/nouislider.self-18d2d5ad521555c564cc69b1c153247aedf8c99609e154dc0bf963a5b3d7ede1.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/ckeditor/init.self-2f3e80b764bc18c9362e6f3326e1f32d4a8bdceff67345a3453a93b111626ff3.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/ckeditor/ckeditor.self-3bf56bf393bee65859bc77ba70e26a11bb7e07f0991ba908d1e9a37446e7022b.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/application.self-10ad0916cf31256fe71785e8dc9cc297a96b1cdf7b74aeb61711199b9a3d003f.js?body=1" for 127.0.0.1 at 2016-09-23 19:23:20 +0100
+
+
+Started GET "/assets/roboto/Roboto-Regular-b5c9c23bd12593523a46d79dd0aee80e3226bbde4c9ac05fc30a95e2c1510de0.woff2" for 127.0.0.1 at 2016-09-23 19:23:21 +0100
+
+
+Started GET "/assets/roboto/Roboto-Light-94a0ac8d73bb60a9cbe27a4fa36669104f6ffa37c8ff2df29313a6c0d3b64a75.woff2" for 127.0.0.1 at 2016-09-23 19:23:21 +0100
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-23 19:23:25 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 135ms (Views: 132.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-23 19:23:48 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 140ms (Views: 139.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-23 19:24:09 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 135ms (Views: 133.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-09-23 19:25:00 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hTui4fKeud7JPZujW3t2GKFh8voNLWVo2XshW6oucinV2QSMDmCPOxcV2ymTnYg8ImuW4bTUFyIeL06dQgbM+Q==", "user"=>{"email"=>"admin@blog.ma", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'admin@blog.ma'  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2016-09-23 17:12:37', `current_sign_in_at` = '2016-09-23 18:25:00', `sign_in_count` = 4, `updated_at` = '2016-09-23 18:25:00' WHERE `users`.`id` = 1
+  [1m[36m (42.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 199ms (ActiveRecord: 43.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 19:25:00 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 120ms (Views: 118.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/4/edit" for 127.0.0.1 at 2016-09-23 19:28:05 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (1.0ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1
+  Rendered posts/_form.html.erb (1.6ms)
+  Rendered posts/edit.html.erb within layouts/application (3.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 167ms (Views: 164.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/posts/4/edit" for 127.0.0.1 at 2016-09-23 19:28:50 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1
+  Rendered posts/_form.html.erb (2.3ms)
+  Rendered posts/edit.html.erb within layouts/application (5.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 148ms (Views: 145.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/posts/4/edit" for 127.0.0.1 at 2016-09-23 19:29:55 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (0.5ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1
+  Rendered posts/_editform.html.erb (2.1ms)
+  Rendered posts/edit.html.erb within layouts/application (6.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 140ms (Views: 137.5ms | ActiveRecord: 0.9ms)
+
+
+Started PATCH "/posts/4" for 127.0.0.1 at 2016-09-23 19:30:23 +0100
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rRhiYyWeiwBFpDkRLZ1A7rbqYpOwvLJ96JBCMHRNYvPYLSXNZWcpMaeHZSRK9VJ9e0VNamyDj2LZ9ST+8bAyWw==", "post"=>{"title"=>" Matrix Representation of Quaternion Rotation ", "body"=>"Now that we know how to represent quaternion multiplication as a matrix-vector product, we are going to use that knowledge to derive a formula to represent quaternion rotation as multiplication by a matrix. There seems to be a lot of mystery surrounding this on the internet; people who write about this give the formula for the reader to use as a black box and they don't worry about giving details about where it came from.\r\n\r\nLook at the formula for quaternion rotation. We first multiply v by the quaternion q on the left and then we multiply the result by the quaternion q∗ on the right (or you can think of it as multiplying v by q∗ on the right and then multiplying the result by q on the left). Now call the matrix corresponding to multiplication by q on the left A and call the matrix corresponding to multiplication by q∗ on the right B. We first represent the product qv as AvT. Now we have to include q∗ in the product but we are multiplying on the right so the matrix product gives BAvT (here vT is the vector representation of the quaternion v). That's it, we have our matrix representation of quaternion rotation. \r\n\r\nIn fact, ABvT gives the same effect; it depends on which multiplication you do first: qv or vq∗. So this tells us that A and B commute in this case: AB=BA. Now let us go ahead and compute this product.", "image"=>""}, "commit"=>"Publish", "id"=>"4"}
+  [1m[35mPost Load (0.5ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE `posts` SET `body` = 'Now that we know how to represent quaternion multiplication as a matrix-vector product, we are going to use that knowledge to derive a formula to represent quaternion rotation as multiplication by a matrix. There seems to be a lot of mystery surrounding this on the internet; people who write about this give the formula for the reader to use as a black box and they don\'t worry about giving details about where it came from.\r\n\r\nLook at the formula for quaternion rotation. We first multiply v by the quaternion q on the left and then we multiply the result by the quaternion q∗ on the right (or you can think of it as multiplying v by q∗ on the right and then multiplying the result by q on the left). Now call the matrix corresponding to multiplication by q on the left A and call the matrix corresponding to multiplication by q∗ on the right B. We first represent the product qv as AvT. Now we have to include q∗ in the product but we are multiplying on the right so the matrix product gives BAvT (here vT is the vector representation of the quaternion v). That\'s it, we have our matrix representation of quaternion rotation. \r\n\r\nIn fact, ABvT gives the same effect; it depends on which multiplication you do first: qv or vq∗. So this tells us that A and B commute in this case: AB=BA. Now let us go ahead and compute this product.', `updated_at` = '2016-09-23 18:30:23' WHERE `posts`.`id` = 4
+  [1m[36mActsAsTaggableOn::Tagging Load (0.5ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 4 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35m (46.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/posts/4
+Completed 302 Found in 57ms (ActiveRecord: 49.2ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2016-09-23 19:30:23 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  [1m[35mUser Load (1.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (3.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 4[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (1.4ms)
+  Rendered posts/show.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 148ms (Views: 141.2ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2016-09-23 19:30:39 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 4[0m
+  [1m[35mComment Load (2.2ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (1.3ms)
+  Rendered posts/show.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 118ms (Views: 113.4ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/posts/4/edit" for 127.0.0.1 at 2016-09-23 19:30:42 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  Rendered posts/_editform.html.erb (1.8ms)
+  Rendered posts/edit.html.erb within layouts/application (3.6ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Completed 200 OK in 147ms (Views: 144.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 19:30:55 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (1.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mUser Load (1.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 179ms (Views: 176.1ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:30:57 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (1.9ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (0.9ms)
+  Rendered comments/_form.html.erb (1.3ms)
+  Rendered posts/show.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 126ms (Views: 121.6ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:34:04 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.6ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35mUser Load (4.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (1.1ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.7ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (0.8ms)
+  Rendered comments/_form.html.erb (1.3ms)
+  Rendered posts/show.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 158ms (Views: 148.7ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:34:23 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (1.1ms)
+  Rendered comments/_form.html.erb (1.2ms)
+  Rendered posts/show.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 120ms (Views: 117.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:34:46 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (0.8ms)
+  Rendered comments/_form.html.erb (1.3ms)
+  Rendered posts/show.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 124ms (Views: 119.9ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:35:36 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.3ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (1.2ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (1.1ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (0.8ms)
+  Rendered comments/_form.html.erb (2.9ms)
+  Rendered posts/show.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 150ms (Views: 144.1ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 19:35:40 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (1.3ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 123ms (Views: 120.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 19:35:57 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 123ms (Views: 121.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 19:36:46 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (3.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 118ms (Views: 113.7ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 19:37:09 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 121ms (Views: 120.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2016-09-23 19:37:14 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 4[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (1.8ms)
+  Rendered posts/show.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 145ms (Views: 141.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 19:37:25 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 129ms (Views: 127.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2016-09-23 19:37:28 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 4 LIMIT 1[0m
+  [1m[35mUser Load (3.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (1.6ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 4[0m
+  [1m[35mComment Load (0.9ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (1.3ms)
+  Rendered posts/show.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 179ms (Views: 171.9ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:37:31 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (0.8ms)
+  Rendered comments/_form.html.erb (1.4ms)
+  Rendered posts/show.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 145ms (Views: 141.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:38:01 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (4.9ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35mUser Load (3.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (1.1ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (7.2ms)
+  Rendered comments/_form.html.erb (4.0ms)
+  Rendered posts/show.html.erb within layouts/application (22.8ms)
+Completed 200 OK in 169ms (Views: 158.2ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:38:46 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (5.6ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35mUser Load (5.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (0.7ms)
+  Rendered comments/_form.html.erb (1.1ms)
+  Rendered posts/show.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 132ms (Views: 118.8ms | ActiveRecord: 11.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 19:38:50 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 122ms (Views: 120.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2016-09-23 19:46:14 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (4.6ms)
+  Rendered posts/new.html.erb within layouts/application (5.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 133ms (Views: 131.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 19:46:31 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 137ms (Views: 135.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 19:50:32 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (2.0ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 138ms (Views: 134.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 19:51:06 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 129ms (Views: 127.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 19:54:00 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (2.4ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (1.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 186ms (Views: 181.6ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:54:02 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  Rendered posts/show.html.erb within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.4ms)
+
+SyntaxError (/home/return/blog/app/views/posts/show.html.erb:8: syntax error, unexpected tLABEL, expecting '='
+...fer.append=( @post.body, class:"flow-text" );@output_buffer....
+...                               ^):
+  app/views/posts/show.html.erb:8: syntax error, unexpected tLABEL, expecting '='
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (28.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (39.1ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:54:14 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  Rendered posts/show.html.erb within layouts/application (1.7ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.6ms)
+
+SyntaxError (/home/return/blog/app/views/posts/show.html.erb:8: syntax error, unexpected tLABEL, expecting '='
+...fer.append=( @post.body, class: "flow-text" );@output_buffer...
+...                               ^):
+  app/views/posts/show.html.erb:8: syntax error, unexpected tLABEL, expecting '='
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (28.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (18.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (38.5ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 19:54:45 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (0.9ms)
+  Rendered comments/_form.html.erb (1.4ms)
+  Rendered posts/show.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 125ms (Views: 122.0ms | ActiveRecord: 2.2ms)

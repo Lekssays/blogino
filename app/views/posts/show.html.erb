@@ -5,8 +5,10 @@
 	<div class="row">
 		<%= image_tag @post.image.url, class: "materialboxed" %>
 		<h3><%= @post.title %></h3>
-		<p><%= @post.body %></p>
-		<%= link_to 'Edit', edit_post_path(@post), class: "waves-effect waves-light btn" %> |
+		<p class="flow-text" ><%= @post.body %></p>
+		<% if user_signed_in? %>
+			<%= link_to 'Edit', edit_post_path(@post), class: "waves-effect waves-light btn" %> 
+		<% end %>
 		<%= link_to 'Back', posts_path, class: "waves-effect waves-light btn" %>
 	</div>
 	<div class="row">
