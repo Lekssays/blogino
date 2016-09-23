@@ -12384,3 +12384,1684 @@ Processing by PostsController#show as HTML
   Rendered comments/_form.html.erb (2.3ms)
   Rendered posts/show.html.erb within layouts/application (32.3ms)
 Completed 200 OK in 187ms (Views: 181.8ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at 2016-09-23 21:16:44 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  Rendered posts/_editform.html.erb (6.4ms)
+  Rendered posts/edit.html.erb within layouts/application (10.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 1113ms (Views: 1068.6ms | ActiveRecord: 2.4ms)
+
+
+Started PATCH "/posts/3" for 127.0.0.1 at 2016-09-23 21:17:09 +0100
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0k/NGEWLpJ1AcnmlnPdI8lO05yXDXJOUvTOMMsTHOiQI9VbQ+5oEyeM0dBaUAJ1YVKH35VrBmhLAL5RN8oH4ig==", "post"=>{"title"=>"code.org - More information, history, and philosophy", "body"=>"## Problem: Minimum Spanning Tree: (Kruskal's Algorithm)\r\n\r\n### Input:\r\nYou are given a connected undirected graph G. You want to know what is the minimum spanning tree (a tree with the minimal total weighting of its edges )that connects all the vertices in the graph G. \r\n\r\n### Output:\r\n\r\nWeight of the tree with the minimal total weighting of graph G's edges.\r\n(In this implementation, we displayed the edges that construct the MST)\r\n\r\n### Running Time:\r\nE : Number of Edges, V : number of vertices\r\n- Sorting : O(E log E)\r\n- Union-find: O(log V)\r\n- Overall: O(E log V)\r\n\r\n### Implementation:\r\n```c++\r\n#include <cstdio>\r\n#include <iostream>\r\n#include <vector>\r\n#include <algorithm>\r\n#include <utility>\r\n#define MAXN 30023\r\n#define eps 1e-7\r\n\r\nusing namespace std;\r\n\r\nstruct edge {\r\n    int u, v, w;\r\n    \r\n    bool operator < (edge o) const {\r\n        if( abs(o.w - w) < eps )\r\n            return pair<int, int>(u, v) < pair<int, int>(o.u, o.v);\r\n        return w < o.w;\r\n    }\r\n};\r\n\r\n\r\nint p[MAXN];\r\nvector<edge> edgeList;\r\nvector< pair<int,int> > connectedEdges;\r\n\r\nint find(int u) {\r\n    return p[u] == u ? u : find(p[u]);\r\n}\r\n\r\nvoid merge(int u, int v) {\r\n    int pu = find(u), pv = find(v);\r\n    p[pu] = pv;\r\n}\r\n\r\nint main(void){\r\n\tint u, v, w, n, e;\r\n\r\n\twhile(true){\r\n\t\tcin >> n >> e;\r\n\t\tif(n == 0 && e == 0) return 0;\r\n\t\tedgeList.clear();\r\n\t\tconnectedEdges.clear();\r\n\t\tfor(int i = 0; i < e; i++){\r\n\t\t\tcin >> u >> v >> w;\r\n\t\t\tedgeList.push_back((edge){u, v, w});\r\n\t\t}\r\n\r\n\t\tsort(edgeList.begin(), edgeList.end());\r\n\t\tfor(int i = 0; i < n; i++) p[i] = i;\r\n\r\n\t\tint res = 0;\r\n        for(int i = 0; i < edgeList.size(); i++) {\r\n            int u = edgeList[i].u, v = edgeList[i].v;\r\n            if( find(u) == find(v) ) continue;\r\n            merge(u, v);\r\n            res += edgeList[i].w;\r\n            if(edgeList[i].v > edgeList[i].u){\r\n            \tconnectedEdges.push_back(make_pair(edgeList[i].u, edgeList[i].v));\r\n            } else {\r\n              \tconnectedEdges.push_back(make_pair(edgeList[i].v, edgeList[i].u));\r\n            }\r\n    \t}\r\n\r\n    \tsort(connectedEdges.begin(), connectedEdges.end());\r\n    \tif(res == 0 || connectedEdges.size() != n - 1) puts(\"Impossible\");\r\n    \telse {\r\n    \t\tcout << res << endl;\r\n    \t\tfor (int i = 0; i < connectedEdges.size(); i++){\r\n    \t\t\tcout << connectedEdges[i].first << \" \" << connectedEdges[i].second << endl;\r\n    \t\t}\r\n    \t}\r\n\t}\r\n\treturn 0;\r\n}\r\n```", "image"=>""}, "commit"=>"Edit", "id"=>"3"}
+  [1m[35mPost Load (0.5ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE `posts` SET `body` = '## Problem: Minimum Spanning Tree: (Kruskal\'s Algorithm)\r\n\r\n### Input:\r\nYou are given a connected undirected graph G. You want to know what is the minimum spanning tree (a tree with the minimal total weighting of its edges )that connects all the vertices in the graph G. \r\n\r\n### Output:\r\n\r\nWeight of the tree with the minimal total weighting of graph G\'s edges.\r\n(In this implementation, we displayed the edges that construct the MST)\r\n\r\n### Running Time:\r\nE : Number of Edges, V : number of vertices\r\n- Sorting : O(E log E)\r\n- Union-find: O(log V)\r\n- Overall: O(E log V)\r\n\r\n### Implementation:\r\n```c++\r\n#include <cstdio>\r\n#include <iostream>\r\n#include <vector>\r\n#include <algorithm>\r\n#include <utility>\r\n#define MAXN 30023\r\n#define eps 1e-7\r\n\r\nusing namespace std;\r\n\r\nstruct edge {\r\n    int u, v, w;\r\n    \r\n    bool operator < (edge o) const {\r\n        if( abs(o.w - w) < eps )\r\n            return pair<int, int>(u, v) < pair<int, int>(o.u, o.v);\r\n        return w < o.w;\r\n    }\r\n};\r\n\r\n\r\nint p[MAXN];\r\nvector<edge> edgeList;\r\nvector< pair<int,int> > connectedEdges;\r\n\r\nint find(int u) {\r\n    return p[u] == u ? u : find(p[u]);\r\n}\r\n\r\nvoid merge(int u, int v) {\r\n    int pu = find(u), pv = find(v);\r\n    p[pu] = pv;\r\n}\r\n\r\nint main(void){\r\n	int u, v, w, n, e;\r\n\r\n	while(true){\r\n		cin >> n >> e;\r\n		if(n == 0 && e == 0) return 0;\r\n		edgeList.clear();\r\n		connectedEdges.clear();\r\n		for(int i = 0; i < e; i++){\r\n			cin >> u >> v >> w;\r\n			edgeList.push_back((edge){u, v, w});\r\n		}\r\n\r\n		sort(edgeList.begin(), edgeList.end());\r\n		for(int i = 0; i < n; i++) p[i] = i;\r\n\r\n		int res = 0;\r\n        for(int i = 0; i < edgeList.size(); i++) {\r\n            int u = edgeList[i].u, v = edgeList[i].v;\r\n            if( find(u) == find(v) ) continue;\r\n            merge(u, v);\r\n            res += edgeList[i].w;\r\n            if(edgeList[i].v > edgeList[i].u){\r\n            	connectedEdges.push_back(make_pair(edgeList[i].u, edgeList[i].v));\r\n            } else {\r\n              	connectedEdges.push_back(make_pair(edgeList[i].v, edgeList[i].u));\r\n            }\r\n    	}\r\n\r\n    	sort(connectedEdges.begin(), connectedEdges.end());\r\n    	if(res == 0 || connectedEdges.size() != n - 1) puts(\"Impossible\");\r\n    	else {\r\n    		cout << res << endl;\r\n    		for (int i = 0; i < connectedEdges.size(); i++){\r\n    			cout << connectedEdges[i].first << \" \" << connectedEdges[i].second << endl;\r\n    		}\r\n    	}\r\n	}\r\n	return 0;\r\n}\r\n```', `updated_at` = '2016-09-23 20:17:09' WHERE `posts`.`id` = 3
+  [1m[36mActsAsTaggableOn::Tagging Load (0.3ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35m (34.8ms)[0m  COMMIT
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 59ms (ActiveRecord: 37.2ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 21:17:09 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (20.3ms)
+  Rendered comments/_form.html.erb (2.0ms)
+  Rendered posts/show.html.erb within layouts/application (45.4ms)
+Completed 200 OK in 158ms (Views: 154.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 21:17:33 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (3.0ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 122ms (Views: 118.1ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at 2016-09-23 21:17:47 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  Rendered posts/_editform.html.erb (3.5ms)
+  Rendered posts/edit.html.erb within layouts/application (5.9ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Completed 200 OK in 181ms (Views: 179.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at 2016-09-23 21:17:51 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  Rendered posts/_editform.html.erb (2.6ms)
+  Rendered posts/edit.html.erb within layouts/application (5.0ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Completed 200 OK in 145ms (Views: 142.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 21:17:59 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 190ms (Views: 187.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 21:18:05 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 162ms (Views: 160.5ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-09-23 21:18:31 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rxyhe+OGlAURJ3Ib4lSrDDE2J/6tFhoTViKzOFrXmR91pjqzXZc0UbJhf6jqo36mNiM3PjSLE5UrPqtHbJFbsQ=="}
+  [1m[36mUser Load (1.7ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 15ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 21:18:31 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 160ms (Views: 159.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/53cr3t_p4n3l" for 127.0.0.1 at 2016-09-23 21:18:44 +0100
+Processing by RailsAdmin::MainController#dashboard as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-23 21:18:44 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (16.3ms)
+Completed 200 OK in 154ms (Views: 151.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-09-23 21:18:55 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Gva11OURLJssyRjTiJEGYtsKg8D0it0bxU3uWbxAkBLT52IdNBijRbISx0hbYt7ESSDxj+zTQFE27+bxiYTqzw==", "user"=>{"email"=>"blog@blog.ma", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (3.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'blog@blog.ma'  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2016-09-23 19:34:13', `current_sign_in_at` = '2016-09-23 20:18:56', `sign_in_count` = 6, `updated_at` = '2016-09-23 20:18:56' WHERE `users`.`id` = 2[0m
+  [1m[35m (45.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/53cr3t_p4n3l/
+Completed 302 Found in 232ms (ActiveRecord: 49.0ms)
+
+
+Started GET "/53cr3t_p4n3l/" for 127.0.0.1 at 2016-09-23 21:18:56 +0100
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `ckeditor_assets` WHERE (1=1)
+  [1m[36mCkeditor::Asset Load (0.2ms)[0m  [1mSELECT  `ckeditor_assets`.* FROM `ckeditor_assets`  ORDER BY `ckeditor_assets`.`id` DESC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `ckeditor_assets` WHERE `ckeditor_assets`.`type` IN ('Ckeditor::AttachmentFile') AND (1=1)
+  [1m[36mCkeditor::AttachmentFile Load (0.2ms)[0m  [1mSELECT  `ckeditor_assets`.* FROM `ckeditor_assets` WHERE `ckeditor_assets`.`type` IN ('Ckeditor::AttachmentFile')  ORDER BY `ckeditor_assets`.`id` DESC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `comments` WHERE (1=1)
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT  `comments`.* FROM `comments`  ORDER BY `comments`.`id` DESC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `ckeditor_assets` WHERE `ckeditor_assets`.`type` IN ('Ckeditor::Picture') AND (1=1)
+  [1m[36mCkeditor::Picture Load (0.2ms)[0m  [1mSELECT  `ckeditor_assets`.* FROM `ckeditor_assets` WHERE `ckeditor_assets`.`type` IN ('Ckeditor::Picture')  ORDER BY `ckeditor_assets`.`id` DESC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `posts` WHERE (1=1)
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT  `posts`.* FROM `posts`  ORDER BY `posts`.`id` DESC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users` WHERE (1=1)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users`  ORDER BY `users`.`id` DESC LIMIT 1[0m
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rails_admin-1.0.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (32.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rails_admin-1.0.0/app/views/layouts/rails_admin/_secondary_navigation.html.haml (5.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rails_admin-1.0.0/app/views/layouts/rails_admin/_navigation.html.haml (10.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rails_admin-1.0.0/app/views/layouts/rails_admin/_sidebar_navigation.html.haml (8.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rails_admin-1.0.0/app/views/layouts/rails_admin/pjax.html.haml (5.0ms)
+Completed 200 OK in 463ms (Views: 272.4ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/53cr3t_p4n3l/post?_pjax=%5Bdata-pjax-container%5D" for 127.0.0.1 at 2016-09-23 21:19:01 +0100
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"_pjax"=>"[data-pjax-container]", "model_name"=>"post"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE (1=1)  ORDER BY posts.id desc LIMIT 20 OFFSET 0[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `posts` WHERE (1=1)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/rails_admin-1.0.0/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax (64.2ms)
+Completed 200 OK in 95ms (Views: 71.8ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-09-23 21:19:03 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"RPEuqwkg9+DFNsqqODfTBZrenGbmg/7DhgiXBBCtMQnz5g4DYLdn5z+9DFAyA9zVOTSTkgRZs0/mTPqRXCDt4A=="}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 21:19:03 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 151ms (Views: 150.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 21:20:50 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (0.4ms)
+  Rendered comments/_form.html.erb (1.4ms)
+  Rendered posts/show.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 144ms (Views: 141.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 21:22:22 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.8ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 159ms (Views: 157.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 21:22:32 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (2.4ms)
+  Rendered comments/_form.html.erb (1.7ms)
+  Rendered posts/show.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 162ms (Views: 159.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 22:57:13 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.7ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 1092ms (Views: 1061.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 22:57:17 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (18.9ms)
+  Rendered comments/_form.html.erb (6.6ms)
+  Rendered posts/show.html.erb within layouts/application (76.6ms)
+Completed 200 OK in 274ms (Views: 260.1ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-23 22:57:29 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (2.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 210ms (Views: 182.8ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-09-23 22:57:32 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xVwpTFuh3K7Aq2q+Uw9oYxoTAp0WCalNhvOVsy1UpjffVLxa5zQCsWNr4eH9FjVDRzL/sWRMhtuNY9GqH/rW/g==", "user"=>{"email"=>"admin@blog.ma", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'admin@blog.ma'  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2016-09-23 20:05:48', `current_sign_in_at` = '2016-09-23 21:57:32', `sign_in_count` = 7, `updated_at` = '2016-09-23 21:57:32' WHERE `users`.`id` = 1
+  [1m[36m (36.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 217ms (ActiveRecord: 38.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 22:57:32 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 126ms (Views: 124.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at 2016-09-23 22:57:39 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  Rendered posts/_editform.html.erb (4.1ms)
+  Rendered posts/edit.html.erb within layouts/application (6.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 133ms (Views: 131.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at 2016-09-23 22:57:43 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.6ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  Rendered posts/_editform.html.erb (1.2ms)
+  Rendered posts/edit.html.erb within layouts/application (3.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 137ms (Views: 134.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2016-09-23 22:59:01 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (4.3ms)
+  Rendered posts/new.html.erb within layouts/application (6.0ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+SyntaxError (/home/return/blog/app/views/posts/_form.html.erb:32: syntax error, unexpected tIDENTIFIER, expecting ')'
+...ditor.update()", rows: "6" cols: "60" );@output_buffer.safe_...
+...                               ^):
+  app/views/posts/_form.html.erb:32: syntax error, unexpected tIDENTIFIER, expecting ')'
+  app/views/posts/new.html.erb:1:in `_app_views_posts_new_html_erb__2547143325804262171_70234325426480'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (40.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (40.2ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2016-09-23 23:01:50 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (2.0ms)
+  Rendered posts/new.html.erb within layouts/application (3.1ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Completed 200 OK in 151ms (Views: 150.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/lib/markdown.js" for 127.0.0.1 at 2016-09-23 23:01:50 +0100
+
+ActionController::RoutingError (No route matches [GET] "/posts/lib/markdown.js"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (51.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (30.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (52.1ms)
+
+
+Started GET "/posts/lib/markdown.js" for 127.0.0.1 at 2016-09-23 23:01:50 +0100
+
+ActionController::RoutingError (No route matches [GET] "/posts/lib/markdown.js"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (65.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (25.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (48.1ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2016-09-23 23:02:14 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (5.1ms)
+  Rendered posts/new.html.erb within layouts/application (6.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 129ms (Views: 128.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/lib/markdown.js" for 127.0.0.1 at 2016-09-23 23:02:15 +0100
+
+ActionController::RoutingError (No route matches [GET] "/posts/lib/markdown.js"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (50.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (22.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (44.5ms)
+
+
+Started GET "/posts/lib/markdown.js" for 127.0.0.1 at 2016-09-23 23:02:15 +0100
+
+ActionController::RoutingError (No route matches [GET] "/posts/lib/markdown.js"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (51.1ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (39.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:02:23 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (1.5ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 119ms (Views: 116.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:02:26 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.8ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (0.6ms)
+  Rendered comments/_form.html.erb (1.6ms)
+  Rendered posts/show.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 158ms (Views: 154.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:02:44 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 143ms (Views: 140.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2016-09-23 23:02:52 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (1.2ms)
+  Rendered posts/new.html.erb within layouts/application (3.9ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Completed 200 OK in 151ms (Views: 149.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/lib/markdown.js" for 127.0.0.1 at 2016-09-23 23:02:52 +0100
+
+ActionController::RoutingError (No route matches [GET] "/posts/lib/markdown.js"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (49.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (22.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (45.5ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-09-23 23:02:58 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ynyGZwhxCHUfR+l+KN1G1PRjXZZBmQlZbxOZUwmq9ILBsbpVThWYtPxPcgndIZgfJ5BChjTKqFYCIfFyFqigUA=="}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:02:58 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 131ms (Views: 130.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:03:02 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 169ms (Views: 168.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:03:32 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (1.7ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 135ms (Views: 132.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:04:41 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.2ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.6ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (0.5ms)
+  Rendered comments/_form.html.erb (4.2ms)
+  Rendered posts/show.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 178ms (Views: 174.0ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:05:57 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (1.3ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (2.5ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (0.4ms)
+  Rendered comments/_form.html.erb (1.5ms)
+  Rendered posts/show.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 135ms (Views: 129.5ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:05:59 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 135ms (Views: 133.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:06:41 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 140ms (Views: 139.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:06:57 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 128ms (Views: 126.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:07:00 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.6ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (1.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (0.4ms)
+  Rendered comments/_form.html.erb (1.9ms)
+  Rendered posts/show.html.erb within layouts/application (20.2ms)
+Completed 200 OK in 155ms (Views: 150.8ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-09-23 23:07:16 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 151ms (Views: 148.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:09:56 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.7ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (17.6ms)
+Completed 200 OK in 13202ms (Views: 13171.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/application.self-6b546c4e965cdebdb43b0bb3dd6594ab3af8f52ebcde1181c1b36bc090455cb3.css?body=1" for 127.0.0.1 at 2016-09-23 23:10:09 +0100
+
+
+Started GET "/assets/epiceditor.self-c5e50412ae54531c0d57f9412c6e146de60032494e3bdd094c719c3e65c715a5.js?body=1" for 127.0.0.1 at 2016-09-23 23:10:09 +0100
+
+
+Started GET "/assets/application.self-a1a74291c4c48f2f663a025ffa678498d6448b849a2d74c0ca25e39ee192c0a7.js?body=1" for 127.0.0.1 at 2016-09-23 23:10:09 +0100
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:10:17 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.8ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (21.9ms)
+  Rendered comments/_form.html.erb (7.1ms)
+  Rendered posts/show.html.erb within layouts/application (80.3ms)
+Completed 200 OK in 223ms (Views: 207.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2016-09-23 23:10:32 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (3.2ms)
+  Rendered posts/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 124ms (Views: 123.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/lib/markdown.js" for 127.0.0.1 at 2016-09-23 23:10:32 +0100
+
+ActionController::RoutingError (No route matches [GET] "/posts/lib/markdown.js"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (49.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (41.4ms)
+
+
+Started GET "/posts/lib/markdown.js" for 127.0.0.1 at 2016-09-23 23:10:33 +0100
+
+ActionController::RoutingError (No route matches [GET] "/posts/lib/markdown.js"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.1ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (48.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (40.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 23:10:43 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.9ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 146ms (Views: 143.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 23:10:55 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 1848ms (Views: 1846.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:10:59 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (2.2ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (2.7ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (1.7ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (0.6ms)
+  Rendered comments/_form.html.erb (4.4ms)
+  Rendered posts/show.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 148ms (Views: 140.0ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-09-23 23:11:15 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 168ms (Views: 151.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2016-09-23 23:11:22 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (1.3ms)
+  Rendered posts/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 134ms (Views: 133.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/lib/markdown.js" for 127.0.0.1 at 2016-09-23 23:11:22 +0100
+
+ActionController::RoutingError (No route matches [GET] "/posts/lib/markdown.js"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (30.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (76.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (27.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (55.3ms)
+
+
+Started GET "/posts/lib/markdown.js" for 127.0.0.1 at 2016-09-23 23:11:22 +0100
+
+ActionController::RoutingError (No route matches [GET] "/posts/lib/markdown.js"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (7.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (62.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (20.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (43.6ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2016-09-23 23:11:37 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QfLf9vlVkKe3ie5vFUkO+TYjevReDYei7Ai47rtfmHgr0V6SxbJB8qyDJ1u4mFNn7KNtA+Gq4K8KEIp85ISOkw==", "post"=>{"title"=>"Matrix Representation of Quaternion Rotation", "body"=>"Hello", "image"=>""}, "commit"=>"Publish"}
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Matrix Representation of Quaternion Rotation', 'Hello', '2016-09-23 22:11:37', '2016-09-23 22:11:37')
+  [1m[36mActsAsTaggableOn::Tagging Load (0.5ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 5 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35m (84.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/posts/5
+Completed 302 Found in 97ms (ActiveRecord: 87.0ms)
+
+
+Started GET "/posts/5" for 127.0.0.1 at 2016-09-23 23:11:37 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 5
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5[0m
+  Rendered collection (0.0ms)
+  Rendered comments/_form.html.erb (1.8ms)
+  Rendered posts/show.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 155ms (Views: 152.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/images/original/missing.png" for 127.0.0.1 at 2016-09-23 23:11:37 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/original/missing.png"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (67.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (23.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (48.0ms)
+
+
+Started GET "/images/original/missing.png" for 127.0.0.1 at 2016-09-23 23:11:38 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/original/missing.png"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (50.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (21.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (43.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 23:11:47 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 150ms (Views: 148.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/images/original/missing.png" for 127.0.0.1 at 2016-09-23 23:11:47 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/original/missing.png"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (50.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (39.6ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-23 23:11:50 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 166ms (Views: 163.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-09-23 23:11:51 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PN41GiRDIpRWVZQtH4bSaObQmSbip5bBCm4HoEUJPLdW/bR+GKTzwU1fXRmyV4/2PFCO0V0A8czsdjUyGtIqXA==", "user"=>{"email"=>"admin@blog.ma", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'admin@blog.ma'  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2016-09-23 21:57:32', `current_sign_in_at` = '2016-09-23 22:11:52', `sign_in_count` = 8, `updated_at` = '2016-09-23 22:11:52' WHERE `users`.`id` = 1[0m
+  [1m[35m (44.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 228ms (ActiveRecord: 45.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:11:52 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 154ms (Views: 152.3ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/posts/5" for 127.0.0.1 at 2016-09-23 23:11:58 +0100
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"AZwGGAFV1E7gr8WikB7L9WKx34m9rdW5ckOgv3Tf46Iepp8ZeZyFbjjtO2x9WwlAXiVoxtv/5XBbkx2mhgQbOA==", "id"=>"5"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mComment Load (2.8ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (0.9ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 5 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tagging Load (1.9ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 5 AND `taggings`.`taggable_type` = 'Post' AND `taggings`.`context` = 'tags'[0m
+  [1m[35mSQL (0.7ms)[0m  DELETE FROM `posts` WHERE `posts`.`id` = 5
+  [1m[36m (188.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 212ms (ActiveRecord: 195.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 23:11:58 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (1.5ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 158ms (Views: 155.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 23:12:02 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (1.8ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 177ms (Views: 174.4ms | ActiveRecord: 2.1ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-09-23 23:12:16 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"NF3buWzGvIY0QwkLZd48ECcnUyO0rVcww+9eX+XmljErZ0K4FA/tpuwB98WIm/6lG7PkbNL/Z/nqP+NGFz1uqw=="}
+  [1m[35mUser Load (3.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (1.6ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 12ms (ActiveRecord: 5.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:12:16 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 142ms (Views: 140.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:12:19 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (2.1ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 137ms (Views: 134.5ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-23 23:12:24 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 168ms (Views: 166.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-09-23 23:12:26 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hy+TMObTMnLzw0hZHjT0y4xN5a5K6k6RrQgP0sGiPNl5lTvajKVyQpISB4KqrJ0pd1RnhXTRA7Qj9wDSkkr/bg==", "user"=>{"email"=>"admin@blog.ma", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (10.1ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'admin@blog.ma'  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2016-09-23 22:11:52', `current_sign_in_at` = '2016-09-23 22:12:26', `sign_in_count` = 9, `updated_at` = '2016-09-23 22:12:26' WHERE `users`.`id` = 1[0m
+  [1m[35m (42.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 219ms (ActiveRecord: 52.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:12:26 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 145ms (Views: 143.8ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-09-23 23:12:33 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"odVDYAv/tm5EYic4caCT+XL6mSTVhZuIlvSN6rovZBg3G8s7CYpICRmeE6P82vySxN3quOKCGP+QaROswvuALg=="}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:12:33 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 137ms (Views: 136.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2016-09-23 23:12:40 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (2.1ms)
+  Rendered posts/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 145ms (Views: 144.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/lib/markdown.js" for 127.0.0.1 at 2016-09-23 23:12:40 +0100
+
+ActionController::RoutingError (No route matches [GET] "/posts/lib/markdown.js"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.1ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (53.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (22.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (43.7ms)
+
+
+Started GET "/posts/lib/markdown.js" for 127.0.0.1 at 2016-09-23 23:12:41 +0100
+
+ActionController::RoutingError (No route matches [GET] "/posts/lib/markdown.js"):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (52.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (20.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (39.8ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 23:12:53 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 175ms (Views: 173.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:13:50 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.6ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (2.2ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (0.4ms)
+  Rendered comments/_form.html.erb (1.8ms)
+  Rendered posts/show.html.erb within layouts/application (11.7ms)
+Completed 200 OK in 158ms (Views: 153.6ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:14:03 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 163ms (Views: 152.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:14:11 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (0.5ms)
+  Rendered comments/_form.html.erb (1.5ms)
+  Rendered posts/show.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 165ms (Views: 161.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:14:22 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 145ms (Views: 143.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-23 23:14:44 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 190ms (Views: 188.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-09-23 23:14:56 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 156ms (Views: 154.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 23:15:00 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 163ms (Views: 161.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 23:16:34 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 1822ms (Views: 1820.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.self-ae0164c1a187b4865ebc52cb5d610ffb397a0f4574f6e06da1bc77f936f79a2e.css?body=1" for 127.0.0.1 at 2016-09-23 23:16:36 +0100
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 23:16:38 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 180ms (Views: 179.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:16:41 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 158ms (Views: 156.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:18:00 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 183ms (Views: 181.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:18:02 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 190ms (Views: 189.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:18:31 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (1.6ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 181ms (Views: 178.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:18:33 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 152ms (Views: 150.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:18:49 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 157ms (Views: 156.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-23 23:18:54 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 152ms (Views: 151.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-09-23 23:18:56 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RfL6hKAO5YFe1h3I2yB2O/+nyw2ru9fJ9LzJrWDsnGXw+L6cvvB5XMJzrato1tZjfVg3jLC2h/jwGtCtRH4rbw==", "user"=>{"email"=>"admin@blog.ma", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (2.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'admin@blog.ma'  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2016-09-23 22:12:26', `current_sign_in_at` = '2016-09-23 22:18:56', `sign_in_count` = 10, `updated_at` = '2016-09-23 22:18:56' WHERE `users`.`id` = 1[0m
+  [1m[35m (62.8ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 239ms (ActiveRecord: 65.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:18:56 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 148ms (Views: 146.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:18:59 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 148ms (Views: 146.4ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2016-09-23 23:19:41 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"IDjnQ9xWL6+rs0C2kUVVoKL/lyqLDTxn99HQPLqjNXeKkCSp071Rw09lGbPj82UcFiIn0dfP6Li42Y1T8cPNcA=="}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:19:41 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 147ms (Views: 145.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:19:44 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 149ms (Views: 148.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:19:48 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (2.1ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.8ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (0.4ms)
+  Rendered comments/_form.html.erb (1.4ms)
+  Rendered posts/show.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 134ms (Views: 129.3ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 23:19:58 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (1.9ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 170ms (Views: 167.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 23:20:31 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (1.3ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 135ms (Views: 133.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 23:20:36 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (1.9ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 157ms (Views: 154.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-09-23 23:21:07 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 142ms (Views: 141.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:21:10 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (0.6ms)
+  Rendered comments/_form.html.erb (1.4ms)
+  Rendered posts/show.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 150ms (Views: 146.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:22:06 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (3.1ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (1.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (2.8ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (0.3ms)
+  Rendered comments/_form.html.erb (3.5ms)
+  Rendered posts/show.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 150ms (Views: 141.1ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:23:08 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.6ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (0.3ms)
+  Rendered comments/_form.html.erb (1.5ms)
+  Rendered posts/show.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 135ms (Views: 132.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:23:17 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (1.7ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.6ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (0.3ms)
+  Rendered comments/_form.html.erb (1.4ms)
+  Rendered posts/show.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 176ms (Views: 171.7ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:23:38 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (0.6ms)
+  Rendered comments/_form.html.erb (1.3ms)
+  Rendered posts/show.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 135ms (Views: 132.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:24:21 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 140ms (Views: 139.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:26:23 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35m (2.2ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.7ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (0.5ms)
+  Rendered comments/_form.html.erb (1.2ms)
+  Rendered posts/show.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 137ms (Views: 132.8ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2016-09-23 23:26:43 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 149ms (Views: 147.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-23 23:26:47 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 145ms (Views: 143.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:26:53 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (2.5ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 159ms (Views: 155.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:27:00 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (0.4ms)
+  Rendered comments/_form.html.erb (1.5ms)
+  Rendered posts/show.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 136ms (Views: 132.9ms | ActiveRecord: 1.7ms)

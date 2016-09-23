@@ -29,7 +29,20 @@
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">mode_edit</i>
-            <%= f.text_area :body, placeholder: "Share what's in your mind...", type: "text", class: "materialize-textarea" %>
+              <%= f.text_area :body, placeholder: "Share what's in your mind...", type: "text", class: "materialize-textarea" %>
+            <div id="preview"> </div>
+            <script src="lib/markdown.js"></script>
+            <script>
+              function Editor(input, preview) {
+                this.update = function () {
+                  preview.innerHTML = markdown.toHTML(input.value);
+                };
+                input.editor = this;
+                this.update();
+              }
+                var $ = function (id) { return document.getElementById(id); };
+                new Editor($("text-input"), $("preview"));
+            </script>
             <label for="body">Body</label>
           </div>
         </div> 
