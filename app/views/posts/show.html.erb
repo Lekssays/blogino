@@ -1,11 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-
 <div class="container">
 	<div class="row">
 		<%= image_tag @post.image.url, class: "materialboxed" %>
 		<h3><%= @post.title %></h3>
-		<p class="flow-text" ><%= @post.body %></p>
+		<%= markdown(@post.body) %>
 		<% if user_signed_in? %>
 			<%= link_to 'Edit', edit_post_path(@post), class: "waves-effect waves-light btn" %> 
 		<% end %>
@@ -13,7 +12,6 @@
 	</div>
 	<div class="row">
 		<h5>
-			<i class="material-icons prefix">comment</i>
 			<%= @post.comments.count %> Comments	
 		</h5>	
 	</div>
