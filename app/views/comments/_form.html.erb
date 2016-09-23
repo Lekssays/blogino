@@ -1,28 +1,39 @@
-<div class="row">
-<%= form_for([@post, @post.comments.build]) do |f| %>
-<form class="col s12">
-  <div class="row">
-    <div class="input-field col s12">
-        <i class="material-icons prefix">account_circle</i>
-    	<%= f.text_field :name, placeholder: "Full name...", type: "text", class: "validate" %>
-      <label for="first_name">Full Name</label>
+
+  <div class="col s12 m8 offset-m2 l6 offset-l3">
+<div class="card-panel grey lighten-5 z-depth-1">
+  <div class="row valign-wrapper">
+    <div class="col s12">
+      <h5>
+        <i class="material-icons prefix">note_add</i>
+        Add a comment:
+      </h5>
+      <%= form_for([@post, @post.comments.build]) do |f| %>
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+              <i class="material-icons prefix">account_circle</i>
+            <%= f.text_field :name, placeholder: "Full name...", type: "text", class: "validate" %>
+            <label for="first_name">Full Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">email</i>
+            <%= f.text_field :email, placeholder: "Email...", type: "email", class: "validate" %>
+            <label for="email">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">mode_edit</i>
+            <%= f.text_field :body, placeholder: "Share what's in your mind...", type: "text", class: "materialize-textarea" %>
+            <label for="body">Body</label>
+          </div>
+        </div> 
+        <%= f.submit "Comment", class: "waves-effect waves-light btn" %>    
+      </form>
+      <% end %>      
     </div>
   </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <i class="material-icons prefix">email</i>
-      <%= f.text_field :email, placeholder: "Email...", type: "email", class: "validate" %>
-      <label for="email">Email</label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12">
-    	<i class="material-icons prefix">mode_edit</i>
-    	<%= f.text_field :body, placeholder: "Share what's in your mind...", type: "text", class: "validate" %>
-      <label for="body">Body</label>
-    </div>
-  </div> 
-  <%= f.submit "Comment", class: "waves-effect waves-light btn" %>    
-</form>
-<% end %>
+</div>
 </div>
