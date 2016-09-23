@@ -30,19 +30,6 @@
           <div class="input-field col s12">
             <i class="material-icons prefix">mode_edit</i>
               <%= f.text_area :body, placeholder: "Share what's in your mind...", type: "text", class: "materialize-textarea" %>
-            <div id="preview"> </div>
-            <script src="lib/markdown.js"></script>
-            <script>
-              function Editor(input, preview) {
-                this.update = function () {
-                  preview.innerHTML = markdown.toHTML(input.value);
-                };
-                input.editor = this;
-                this.update();
-              }
-                var $ = function (id) { return document.getElementById(id); };
-                new Editor($("text-input"), $("preview"));
-            </script>
             <label for="body">Body</label>
           </div>
         </div> 
@@ -55,6 +42,13 @@
               <%= f.file_field :image, type: "text", class: "file-path validate" %>
             </div>
           </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">mode_edit</i>
+                <%= f.text_field :tag_list, placeholder: "Tags seperated by a comma...", type: "text", class: "validate" %>
+              <label for="tags">Tags</label>
+            </div>
+          </div> 
         <%= f.submit "Publish", class: "waves-effect waves-light btn" %>    
       </form>
       <% end %>      

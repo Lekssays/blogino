@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923162353) do
+ActiveRecord::Schema.define(version: 20160923232755) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",    limit: 255, null: false
@@ -52,6 +52,18 @@ ActiveRecord::Schema.define(version: 20160923162353) do
     t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
   end
+
+  create_table "slugs", force: :cascade do |t|
+    t.integer  "sluggable_id",   limit: 4,                  null: false
+    t.string   "sluggable_type", limit: 255,                null: false
+    t.boolean  "active",                     default: true, null: false
+    t.string   "slug",           limit: 126,                null: false
+    t.string   "scope",          limit: 126
+    t.datetime "created_at"
+  end
+
+  add_index "slugs", ["sluggable_type", "scope", "slug"], name: "slugs_unique", unique: true, using: :btree
+  add_index "slugs", ["sluggable_type", "sluggable_id", "active"], name: "slugs_for_record", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id",        limit: 4

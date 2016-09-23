@@ -14065,3 +14065,1284 @@ Processing by PostsController#show as HTML
   Rendered comments/_form.html.erb (1.5ms)
   Rendered posts/show.html.erb within layouts/application (7.2ms)
 Completed 200 OK in 136ms (Views: 132.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:40:10 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (25.3ms)
+Completed 200 OK in 1347ms (Views: 1314.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:40:15 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.5ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.5ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (19.9ms)
+  Rendered comments/_form.html.erb (7.0ms)
+  Rendered posts/show.html.erb within layouts/application (64.8ms)
+Completed 200 OK in 192ms (Views: 180.9ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:41:52 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  Rendered posts/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 146ms (Views: 144.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:50:11 +0100
+Processing by PostsController#index as HTML
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.8ms)
+
+NoMethodError (undefined method `attr_accessible' for #<Class:0x007f74a4451058>
+Did you mean?  attr_accessor):
+  app/models/post.rb:5:in `<class:Post>'
+  app/models/post.rb:1:in `<top (required)>'
+  app/controllers/posts_controller.rb:7:in `index'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (26.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (39.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:50:32 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 160ms (Views: 146.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:50:34 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.9ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  Rendered posts/show.html.erb within layouts/application (46.4ms)
+Completed 500 Internal Server Error in 55ms (ActiveRecord: 0.9ms)
+
+ActionView::Template::Error (undefined local variable or method `post' for #<#<Class:0x007f74a4d18e70>:0x007f74ab874ef8>
+Did you mean?  @post):
+     5: 		<%= image_tag @post.image.url, class: "materialboxed" %>
+     6: 		<h3><%= @post.title %></h3>
+     7: 		<%= markdown(@post.body) %>
+     8: 		<h5>Tags: <%= post.tag_list %></h5>
+     9: 		<% if user_signed_in? %>
+    10: 			<%= link_to 'Edit', edit_post_path(@post), class: "waves-effect waves-light btn" %> 
+    11: 		<% end %>
+  app/views/posts/show.html.erb:8:in `_app_views_posts_show_html_erb___4201811137199213004_70069535292520'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (39.2ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:51:14 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (0.7ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (15.2ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (0.4ms)
+  Rendered comments/_form.html.erb (2.1ms)
+  Rendered posts/show.html.erb within layouts/application (79.4ms)
+Completed 200 OK in 204ms (Views: 179.0ms | ActiveRecord: 20.1ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-09-23 23:51:24 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 194ms (Views: 173.6ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-09-23 23:51:25 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jblCXJSfWNBsAitpp5/tj0swdE7RonGgD8I59rMksOcbIrgsHiEZapzV3RtWs05g8Wj/ZQg+7/HpSH1DKemQwA==", "user"=>{"email"=>"admin@blog.ma", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'admin@blog.ma'  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2016-09-23 22:18:56', `current_sign_in_at` = '2016-09-23 22:51:25', `sign_in_count` = 11, `updated_at` = '2016-09-23 22:51:25' WHERE `users`.`id` = 1
+  [1m[36m (36.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 210ms (ActiveRecord: 37.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-23 23:51:26 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (1.4ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 136ms (Views: 133.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at 2016-09-23 23:51:28 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (1.2ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  Rendered posts/_editform.html.erb (3.4ms)
+  Rendered posts/edit.html.erb within layouts/application (7.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 156ms (Views: 153.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at 2016-09-23 23:51:37 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  Rendered posts/_editform.html.erb (1.4ms)
+  Rendered posts/edit.html.erb within layouts/application (2.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 162ms (Views: 159.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at 2016-09-23 23:52:22 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (2.3ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  Rendered posts/_editform.html.erb (4.0ms)
+  Rendered posts/edit.html.erb within layouts/application (7.1ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 166ms (Views: 160.8ms | ActiveRecord: 2.8ms)
+
+
+Started PATCH "/posts/3" for 127.0.0.1 at 2016-09-23 23:55:17 +0100
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GCTZucHzjn6/uq+LA12aLklfmD1yq7RI3sCxiWKMFPmMQyirJioUngqaJhwI8MqWVOz0xhta82to16QTwr4tsg==", "post"=>{"title"=>"code.org - More information, history, and philosophy", "body"=>"graph theory, mst", "image"=>""}, "commit"=>"Edit", "id"=>"3"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  UPDATE `posts` SET `body` = 'graph theory, mst', `updated_at` = '2016-09-23 22:55:17' WHERE `posts`.`id` = 3
+  [1m[36mActsAsTaggableOn::Tagging Load (0.9ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35m (60.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 76ms (ActiveRecord: 64.5ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-23 23:55:17 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (0.4ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (0.5ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (1.1ms)
+  Rendered comments/_form.html.erb (2.3ms)
+  Rendered posts/show.html.erb within layouts/application (19.9ms)
+Completed 200 OK in 168ms (Views: 163.8ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at 2016-09-23 23:55:29 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  Rendered posts/_editform.html.erb (3.2ms)
+  Rendered posts/edit.html.erb within layouts/application (4.2ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Completed 200 OK in 162ms (Views: 159.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at 2016-09-23 23:55:33 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  Rendered posts/_editform.html.erb (1.4ms)
+  Rendered posts/edit.html.erb within layouts/application (2.4ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Completed 200 OK in 171ms (Views: 168.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/posts/" for 127.0.0.1 at 2016-09-24 00:01:06 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (0.3ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (0.5ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (52.0ms)
+Completed 200 OK in 196ms (Views: 183.0ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:01:15 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (0.5ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (0.5ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 153ms (Views: 149.1ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at 2016-09-24 00:02:01 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (4.1ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (0.8ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (2.6ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  Rendered posts/_editform.html.erb (21.5ms)
+  Rendered posts/edit.html.erb within layouts/application (23.7ms)
+  [1m[35mUser Load (1.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Completed 200 OK in 270ms (Views: 258.8ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at 2016-09-24 00:02:51 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (0.5ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (0.5ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  Rendered posts/_editform.html.erb (11.0ms)
+  Rendered posts/edit.html.erb within layouts/application (12.1ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Completed 200 OK in 154ms (Views: 151.0ms | ActiveRecord: 1.7ms)
+
+
+Started PATCH "/posts/3" for 127.0.0.1 at 2016-09-24 00:03:10 +0100
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1tn1yZeD1KjTIpb6H9gdlJGWeI1OY4ZCrZxth8Spa25CvgTbcFpOSGYCH20UdU0sjCUUdieSwWEbi3gdZJtSJQ==", "post"=>{"title"=>"code.org - More information, history, and philosophy", "body"=>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\nWhy do we use it?\r\n\r\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\r\n", "image"=>"", "tag_list"=>"graph theory, mst"}, "commit"=>"Edit", "id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+Unpermitted parameter: tag_list
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.7ms)[0m  [1mUPDATE `posts` SET `body` = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\nWhy do we use it?\r\n\r\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\r\n', `updated_at` = '2016-09-23 23:03:10' WHERE `posts`.`id` = 3[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (0.8ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36m (77.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 92ms (ActiveRecord: 80.6ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-24 00:03:10 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (2.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36mActsAsTaggableOn::Tagging Load (4.9ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.6ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (2.2ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (1.4ms)
+  Rendered comments/_form.html.erb (4.5ms)
+  Rendered posts/show.html.erb within layouts/application (65.5ms)
+Completed 200 OK in 249ms (Views: 232.1ms | ActiveRecord: 12.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:03:17 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (1.5ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mActsAsTaggableOn::Tagging Load (0.4ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.6ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 151ms (Views: 147.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:05:17 +0100
+Processing by PostsController#index as HTML
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.8ms)
+
+NoMethodError (undefined method `attr_accessible' for #<Class:0x007f74a4674e98>
+Did you mean?  attr_accessor):
+  app/models/post.rb:5:in `<class:Post>'
+  app/models/post.rb:1:in `<top (required)>'
+  app/controllers/posts_controller.rb:12:in `index'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (28.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (20.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (42.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:06:24 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mActsAsTaggableOn::Tagging Load (1.1ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.5ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (36.9ms)
+Completed 200 OK in 219ms (Views: 201.2ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at 2016-09-24 00:07:21 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.7ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36mActsAsTaggableOn::Tagging Load (0.6ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (1.3ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  Rendered posts/_editform.html.erb (13.9ms)
+  Rendered posts/edit.html.erb within layouts/application (16.0ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 181ms (Views: 174.7ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at 2016-09-24 00:07:56 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.5ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36mActsAsTaggableOn::Tagging Load (0.6ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.7ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  Rendered posts/_editform.html.erb (6.2ms)
+  Rendered posts/edit.html.erb within layouts/application (7.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 200 OK in 186ms (Views: 182.0ms | ActiveRecord: 2.2ms)
+
+
+Started PATCH "/posts/3" for 127.0.0.1 at 2016-09-24 00:08:06 +0100
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+AikXKWrjdy3tCnNDNkaZboLhR5EeIzCbQt8+4BMeadsb1VOQnIXPAKUoFoHdErdp7jp5S2Jy+HbHGlhIH5A7A==", "post"=>{"title"=>"code.org - More information, history, and philosophy", "body"=>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\nWhy do we use it?\r\n\r\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\r\n", "image"=>"", "tag_list"=>"graph theory, mst"}, "commit"=>"Edit", "id"=>"3"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36m (2.6ms)[0m  [1mBEGIN[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (0.5ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (0.5ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35mSQL (3.6ms)[0m  UPDATE `posts` SET `updated_at` = '2016-09-23 23:08:06' WHERE `posts`.`id` = 3
+  [1m[36mActsAsTaggableOn::Tag Load (3.7ms)[0m  [1mSELECT `tags`.* FROM `tags` WHERE (LOWER(name) = LOWER('graph theory') OR LOWER(name) = LOWER('mst'))[0m
+  [1m[35mActsAsTaggableOn::Tag Exists (1.0ms)[0m  SELECT  1 AS one FROM `tags` WHERE `tags`.`name` = 'graph theory' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `tags` (`name`) VALUES ('graph theory')[0m
+  [1m[35mActsAsTaggableOn::Tag Exists (0.5ms)[0m  SELECT  1 AS one FROM `tags` WHERE `tags`.`name` = 'mst' LIMIT 1
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO `tags` (`name`) VALUES ('mst')[0m
+  [1m[35mActsAsTaggableOn::Tag Load (1.4ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mActsAsTaggableOn::Tagging Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM `taggings` WHERE (`taggings`.`tag_id` = BINARY 1 AND `taggings`.`taggable_type` = 'Post' AND `taggings`.`taggable_id` = 3 AND `taggings`.`context` = 'tags' AND `taggings`.`tagger_id` IS NULL AND `taggings`.`tagger_type` IS NULL) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `taggings` (`tag_id`, `context`, `taggable_id`, `taggable_type`, `created_at`) VALUES (1, 'tags', 3, 'Post', '2016-09-23 23:08:06')
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1mSELECT  `tags`.* FROM `tags` WHERE `tags`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (14.7ms)[0m  UPDATE `tags` SET `taggings_count` = COALESCE(`taggings_count`, 0) + 1 WHERE `tags`.`id` = 1
+  [1m[36mActsAsTaggableOn::Tagging Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM `taggings` WHERE (`taggings`.`tag_id` = BINARY 2 AND `taggings`.`taggable_type` = 'Post' AND `taggings`.`taggable_id` = 3 AND `taggings`.`context` = 'tags' AND `taggings`.`tagger_id` IS NULL AND `taggings`.`tagger_type` IS NULL) LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `taggings` (`tag_id`, `context`, `taggable_id`, `taggable_type`, `created_at`) VALUES (2, 'tags', 3, 'Post', '2016-09-23 23:08:06')
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1mSELECT  `tags`.* FROM `tags` WHERE `tags`.`id` = 2 LIMIT 1[0m
+  [1m[35mSQL (1.6ms)[0m  UPDATE `tags` SET `taggings_count` = COALESCE(`taggings_count`, 0) + 1 WHERE `tags`.`id` = 2
+  [1m[36m (90.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 418ms (ActiveRecord: 205.6ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-24 00:08:07 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36mActsAsTaggableOn::Tagging Load (1.9ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.6ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.6ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (1.2ms)
+  Rendered comments/_form.html.erb (1.6ms)
+  Rendered posts/show.html.erb within layouts/application (43.8ms)
+Completed 200 OK in 217ms (Views: 210.9ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/posts/" for 127.0.0.1 at 2016-09-24 00:08:15 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (2.3ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mActsAsTaggableOn::Tagging Load (0.5ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.7ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 183ms (Views: 178.1ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/tags/graph%20theory" for 127.0.0.1 at 2016-09-24 00:08:18 +0100
+Processing by PostsController#index as HTML
+  Parameters: {"tag"=>"graph theory"}
+  [1m[35mActsAsTaggableOn::Tag Load (0.4ms)[0m  SELECT `tags`.* FROM `tags` WHERE (LOWER(name) = LOWER('graph theory'))
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT `posts`.* FROM `posts` JOIN taggings posts_taggings_5915669  ON posts_taggings_5915669.taggable_id = posts.id AND posts_taggings_5915669.taggable_type = 'Post' AND posts_taggings_5915669.tag_id = 1[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (1.2ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (1.1ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (23.8ms)
+Completed 200 OK in 247ms (Views: 240.1ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:10:28 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (6.8ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (1.0ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (6.1ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35mUser Load (4.8ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (46.1ms)
+Completed 200 OK in 249ms (Views: 229.8ms | ActiveRecord: 18.8ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-24 00:10:31 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (1.1ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (0.6ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (1.5ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  [1m[35mComment Load (0.6ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3
+  Rendered comments/_comment.html.erb (2.9ms)
+  Rendered comments/_form.html.erb (1.7ms)
+  Rendered posts/show.html.erb within layouts/application (20.6ms)
+Completed 200 OK in 206ms (Views: 198.5ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-24 00:16:02 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  Rendered posts/show.html.erb within layouts/application (63.5ms)
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (undefined local variable or method `post' for #<#<Class:0x005587eeb27c50>:0x007f74a54c0df8>
+Did you mean?  @post):
+     5: 		<%= image_tag @post.image.url, class: "materialboxed" %>
+     6: 		<h3><%= @post.title %></h3>
+     7: 		<%= markdown(@post.body) %>
+     8: 		<p><%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+     9: 		<% if user_signed_in? %>
+    10: 			<%= link_to 'Edit', edit_post_path(@post), class: "waves-effect waves-light btn" %> 
+    11: 		<% end %>
+  app/views/posts/show.html.erb:8:in `_app_views_posts_show_html_erb___4201811137199213004_70069482994580'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (31.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (20.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (41.9ms)
+
+
+Started GET "/posts/3." for 127.0.0.1 at 2016-09-24 00:16:19 +0100
+
+ActionController::RoutingError (No route matches [GET] "/posts/3."):
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /home/return/.rbenv/versions/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.1ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (53.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (20.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (42.6ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-24 00:16:24 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.9ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36mActsAsTaggableOn::Tagging Load (0.6ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.7ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (1.2ms)
+  Rendered comments/_form.html.erb (1.9ms)
+  Rendered posts/show.html.erb within layouts/application (23.1ms)
+Completed 200 OK in 179ms (Views: 168.7ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-24 00:18:03 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (1.7ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36mActsAsTaggableOn::Tagging Load (0.8ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (2.2ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (1.0ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (0.6ms)
+  Rendered comments/_form.html.erb (1.9ms)
+  Rendered posts/show.html.erb within layouts/application (26.8ms)
+Completed 200 OK in 175ms (Views: 164.8ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-24 00:19:26 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.8ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36mActsAsTaggableOn::Tagging Load (2.6ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.6ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.5ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (0.7ms)
+  Rendered comments/_form.html.erb (1.6ms)
+  Rendered posts/show.html.erb within layouts/application (30.5ms)
+Completed 200 OK in 182ms (Views: 170.8ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-24 00:19:43 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36mActsAsTaggableOn::Tagging Load (2.0ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.6ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (0.5ms)
+  Rendered comments/_form.html.erb (1.6ms)
+  Rendered posts/show.html.erb within layouts/application (17.9ms)
+Completed 200 OK in 162ms (Views: 156.3ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2016-09-24 00:19:57 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (5.3ms)[0m  SELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1
+  [1m[36mActsAsTaggableOn::Tagging Load (0.7ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (1.1ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 3
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3[0m
+  Rendered comments/_comment.html.erb (1.4ms)
+  Rendered comments/_form.html.erb (1.9ms)
+  Rendered posts/show.html.erb within layouts/application (22.8ms)
+Completed 200 OK in 173ms (Views: 162.3ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/tags/graph%20theory" for 127.0.0.1 at 2016-09-24 00:20:00 +0100
+Processing by PostsController#index as HTML
+  Parameters: {"tag"=>"graph theory"}
+  [1m[35mActsAsTaggableOn::Tag Load (0.6ms)[0m  SELECT `tags`.* FROM `tags` WHERE (LOWER(name) = LOWER('graph theory'))
+  [1m[36mPost Load (1.0ms)[0m  [1mSELECT `posts`.* FROM `posts` JOIN taggings posts_taggings_5915669  ON posts_taggings_5915669.taggable_id = posts.id AND posts_taggings_5915669.taggable_type = 'Post' AND posts_taggings_5915669.tag_id = 1[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (0.8ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (0.8ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35mUser Load (1.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 179ms (Views: 167.6ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/tags/graph%20theory" for 127.0.0.1 at 2016-09-24 00:21:24 +0100
+Processing by PostsController#index as HTML
+  Parameters: {"tag"=>"graph theory"}
+  [1m[36mActsAsTaggableOn::Tag Load (0.5ms)[0m  [1mSELECT `tags`.* FROM `tags` WHERE (LOWER(name) = LOWER('graph theory'))[0m
+  [1m[35mPost Load (0.6ms)[0m  SELECT `posts`.* FROM `posts` JOIN taggings posts_taggings_5915669  ON posts_taggings_5915669.taggable_id = posts.id AND posts_taggings_5915669.taggable_type = 'Post' AND posts_taggings_5915669.tag_id = 1
+  [1m[36mActsAsTaggableOn::Tagging Load (0.6ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.6ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 157ms (Views: 151.8ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/tags/graph%20theory" for 127.0.0.1 at 2016-09-24 00:21:49 +0100
+Processing by PostsController#index as HTML
+  Parameters: {"tag"=>"graph theory"}
+  [1m[35mActsAsTaggableOn::Tag Load (3.1ms)[0m  SELECT `tags`.* FROM `tags` WHERE (LOWER(name) = LOWER('graph theory'))
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT `posts`.* FROM `posts` JOIN taggings posts_taggings_5915669  ON posts_taggings_5915669.taggable_id = posts.id AND posts_taggings_5915669.taggable_type = 'Post' AND posts_taggings_5915669.tag_id = 1[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (0.9ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (0.6ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35mUser Load (5.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 167ms (Views: 152.4ms | ActiveRecord: 10.1ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateSlugs (20160923232755)
+  [1m[35m (275.1ms)[0m  CREATE TABLE `slugs` (`id` int(11) auto_increment PRIMARY KEY, `sluggable_id` int(11) NOT NULL, `sluggable_type` varchar(255) NOT NULL, `active` tinyint(1) DEFAULT 1 NOT NULL, `slug` varchar(126) NOT NULL, `scope` varchar(126), `created_at` datetime) ENGINE=InnoDB
+  [1m[36m (233.3ms)[0m  [1mCREATE  INDEX `slugs_for_record`  ON `slugs` (`sluggable_type`, `sluggable_id`, `active`) [0m
+  [1m[35m (241.8ms)[0m  CREATE UNIQUE INDEX `slugs_unique`  ON `slugs` (`sluggable_type`, `scope`, `slug`) 
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160923232755')
+  [1m[36m (37.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'blog_development'
+  AND fk.table_name = 'ckeditor_assets'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `ckeditor_assets`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'blog_development'
+  AND fk.table_name = 'comments'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `comments`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'blog_development'
+  AND fk.table_name = 'posts'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `posts`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'blog_development'
+  AND fk.table_name = 'slugs'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `slugs`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'blog_development'
+  AND fk.table_name = 'taggings'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `taggings`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'blog_development'
+  AND fk.table_name = 'tags'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `tags`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'blog_development'
+  AND fk.table_name = 'users'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `users`
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:31:43 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by PostsController#index as HTML
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 0.9ms)
+
+NameError (undefined local variable or method `params' for #<Class:0x007f79043f0668>):
+  app/models/post.rb:10:in `<class:Post>'
+  app/models/post.rb:1:in `<top (required)>'
+  app/controllers/posts_controller.rb:11:in `index'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (27.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (49.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (72.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:32:14 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mActsAsTaggableOn::Tagging Load (0.4ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.7ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mSlug Load (14.9ms)[0m  [1mSELECT  `slugs`.* FROM `slugs` WHERE `slugs`.`sluggable_id` = 3 AND `slugs`.`sluggable_type` = 'Post' AND `slugs`.`active` = 1  ORDER BY `slugs`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (94.8ms)
+Completed 500 Internal Server Error in 114ms (ActiveRecord: 19.6ms)
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"posts", :id=>nil} missing required keys: [:id]):
+    13:             <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    14:           </div>
+    15:           <div class="card-action">
+    16:             <a><%= link_to 'Read More...', post %></a>
+    17:           </div>
+    18:         </div>
+    19:       </div>
+  app/views/posts/index.html.erb:16:in `block in _app_views_posts_index_html_erb__3988171748526134728_46994719619180'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb__3988171748526134728_46994719619180'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (39.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:32:17 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mActsAsTaggableOn::Tagging Load (1.0ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (2.2ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  Rendered posts/index.html.erb within layouts/application (12.8ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 4.3ms)
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"posts", :id=>nil} missing required keys: [:id]):
+    13:             <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    14:           </div>
+    15:           <div class="card-action">
+    16:             <a><%= link_to 'Read More...', post %></a>
+    17:           </div>
+    18:         </div>
+    19:       </div>
+  app/views/posts/index.html.erb:16:in `block in _app_views_posts_index_html_erb__3988171748526134728_46994719619180'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb__3988171748526134728_46994719619180'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (37.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:32:42 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (0.5ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (0.5ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  Rendered posts/index.html.erb within layouts/application (20.3ms)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 5.5ms)
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"posts", :id=>nil} missing required keys: [:id]):
+    13:             <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    14:           </div>
+    15:           <div class="card-action">
+    16:             <a><%= link_to 'Read More...', post %></a>
+    17:           </div>
+    18:         </div>
+    19:       </div>
+  app/views/posts/index.html.erb:16:in `block in _app_views_posts_index_html_erb__3988171748526134728_46994719619180'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb__3988171748526134728_46994719619180'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (38.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:33:09 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.9ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mActsAsTaggableOn::Tagging Load (0.5ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.6ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (30.4ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 3.5ms)
+
+ActionView::Template::Error (No route matches {:action=>"edit", :controller=>"posts", :id=>nil} missing required keys: [:id]):
+    17:       </div>
+    18:     </div>
+    19:     <% if user_signed_in? %>
+    20:       <a><%= link_to 'Edit', edit_post_path(post), class: "waves-effect waves-light btn" %></a>
+    21:       <a><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn red darken-4" %></a> 
+    22:     <% end %>
+    23:   <% end %>
+  app/views/posts/index.html.erb:20:in `block in _app_views_posts_index_html_erb__3988171748526134728_46994722174980'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb__3988171748526134728_46994722174980'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.1ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (38.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:33:11 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mActsAsTaggableOn::Tagging Load (0.5ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (1.0ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (10.4ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 2.5ms)
+
+ActionView::Template::Error (No route matches {:action=>"edit", :controller=>"posts", :id=>nil} missing required keys: [:id]):
+    17:       </div>
+    18:     </div>
+    19:     <% if user_signed_in? %>
+    20:       <a><%= link_to 'Edit', edit_post_path(post), class: "waves-effect waves-light btn" %></a>
+    21:       <a><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn red darken-4" %></a> 
+    22:     <% end %>
+    23:   <% end %>
+  app/views/posts/index.html.erb:20:in `block in _app_views_posts_index_html_erb__3988171748526134728_46994722174980'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb__3988171748526134728_46994722174980'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (38.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:36:06 +0100
+Processing by PostsController#index as HTML
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `params' for #<Class:0x00557b9f20c900>):
+  app/models/post.rb:10:in `<class:Post>'
+  app/models/post.rb:1:in `<top (required)>'
+  app/controllers/posts_controller.rb:11:in `index'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (26.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (18.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (37.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:36:59 +0100
+Processing by PostsController#index as HTML
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.8ms)
+
+NameError (undefined local variable or method `params' for #<Class:0x00557b9fc96d08>):
+  app/models/post.rb:10:in `<class:Post>'
+  app/models/post.rb:1:in `<top (required)>'
+  app/controllers/posts_controller.rb:12:in `index'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.1ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (33.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (22.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (45.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:37:00 +0100
+Processing by PostsController#index as HTML
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 0.9ms)
+
+NameError (undefined local variable or method `params' for #<Class:0x00557b9d3fdd38>):
+  app/models/post.rb:10:in `<class:Post>'
+  app/models/post.rb:1:in `<top (required)>'
+  app/controllers/posts_controller.rb:12:in `index'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (29.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (20.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (40.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:37:12 +0100
+Processing by PostsController#index as HTML
+  [1m[35mSlug Load (0.2ms)[0m  SELECT  `slugs`.* FROM `slugs` WHERE `slugs`.`sluggable_type` = 'Post' AND `slugs`.`slug` IS NULL AND `slugs`.`scope` IS NULL  ORDER BY `slugs`.`id` ASC LIMIT 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (1.8ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (0.8ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  Rendered posts/index.html.erb within layouts/application (22.6ms)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 6.8ms)
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"posts", :id=>nil} missing required keys: [:id]):
+    13:             <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    14:           </div>
+    15:           <div class="card-action">
+    16:             <a><%= link_to 'Read More...', post %></a>
+    17:           </div>
+    18:         </div>
+    19:       </div>
+  app/views/posts/index.html.erb:16:in `block in _app_views_posts_index_html_erb__3988171748526134728_70078868951220'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb__3988171748526134728_70078868951220'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (29.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (20.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (40.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:40:22 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mActsAsTaggableOn::Tagging Load (0.8ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.8ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  Rendered posts/index.html.erb within layouts/application (16.7ms)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 1.9ms)
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"posts", :id=>nil} missing required keys: [:id]):
+    13:             <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    14:           </div>
+    15:           <div class="card-action">
+    16:             <a><%= link_to 'Read More...', post %></a>
+    17:           </div>
+    18:         </div>
+    19:       </div>
+  app/views/posts/index.html.erb:16:in `block in _app_views_posts_index_html_erb__3988171748526134728_70078868951220'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb__3988171748526134728_70078868951220'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.1ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (33.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (42.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:43:47 +0100
+
+ActionController::RoutingError (uninitialized constant PostsController::S):
+  app/controllers/posts_controller.rb:76:in `<class:PostsController>'
+  app/controllers/posts_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (49.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (20.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (40.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:43:49 +0100
+
+ActionController::RoutingError (uninitialized constant PostsController::S):
+  app/controllers/posts_controller.rb:76:in `<class:PostsController>'
+  app/controllers/posts_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (45.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (39.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:43:59 +0100
+Processing by PostsController#index as HTML
+  [1m[36mSlug Load (0.5ms)[0m  [1mSELECT  `slugs`.* FROM `slugs` WHERE `slugs`.`sluggable_type` = 'Post' AND `slugs`.`slug` IS NULL AND `slugs`.`scope` IS NULL  ORDER BY `slugs`.`id` ASC LIMIT 1[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mActsAsTaggableOn::Tagging Load (0.4ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.7ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  Rendered posts/index.html.erb within layouts/application (19.0ms)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 4.4ms)
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"posts", :id=>nil} missing required keys: [:id]):
+    13:             <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    14:           </div>
+    15:           <div class="card-action">
+    16:             <a><%= link_to 'Read More...', post %></a>
+    17:           </div>
+    18:         </div>
+    19:       </div>
+  app/views/posts/index.html.erb:16:in `block in _app_views_posts_index_html_erb__3988171748526134728_70078868951220'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb__3988171748526134728_70078868951220'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (31.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (20.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (41.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:44:01 +0100
+Processing by PostsController#index as HTML
+  [1m[36mSlug Load (2.3ms)[0m  [1mSELECT  `slugs`.* FROM `slugs` WHERE `slugs`.`sluggable_type` = 'Post' AND `slugs`.`slug` IS NULL AND `slugs`.`scope` IS NULL  ORDER BY `slugs`.`id` ASC LIMIT 1[0m
+  [1m[35mPost Load (3.0ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mActsAsTaggableOn::Tagging Load (3.9ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (4.8ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  Rendered posts/index.html.erb within layouts/application (29.4ms)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 18.7ms)
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"posts", :id=>nil} missing required keys: [:id]):
+    13:             <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    14:           </div>
+    15:           <div class="card-action">
+    16:             <a><%= link_to 'Read More...', post %></a>
+    17:           </div>
+    18:         </div>
+    19:       </div>
+  app/views/posts/index.html.erb:16:in `block in _app_views_posts_index_html_erb__3988171748526134728_70078868951220'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb__3988171748526134728_70078868951220'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (29.1ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (20.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (39.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:44:02 +0100
+Processing by PostsController#index as HTML
+  [1m[36mSlug Load (0.4ms)[0m  [1mSELECT  `slugs`.* FROM `slugs` WHERE `slugs`.`sluggable_type` = 'Post' AND `slugs`.`slug` IS NULL AND `slugs`.`scope` IS NULL  ORDER BY `slugs`.`id` ASC LIMIT 1[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mActsAsTaggableOn::Tagging Load (0.5ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.6ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  Rendered posts/index.html.erb within layouts/application (7.5ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.7ms)
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"posts", :id=>nil} missing required keys: [:id]):
+    13:             <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    14:           </div>
+    15:           <div class="card-action">
+    16:             <a><%= link_to 'Read More...', post %></a>
+    17:           </div>
+    18:         </div>
+    19:       </div>
+  app/views/posts/index.html.erb:16:in `block in _app_views_posts_index_html_erb__3988171748526134728_70078868951220'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb__3988171748526134728_70078868951220'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (30.2ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (40.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:44:23 +0100
+Processing by PostsController#index as HTML
+  [1m[36mSlug Load (0.3ms)[0m  [1mSELECT  `slugs`.* FROM `slugs` WHERE `slugs`.`sluggable_type` = 'Post' AND `slugs`.`slug` IS NULL AND `slugs`.`scope` IS NULL  ORDER BY `slugs`.`id` ASC LIMIT 1[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT `posts`.* FROM `posts`
+  [1m[36mActsAsTaggableOn::Tagging Load (0.6ms)[0m  [1mSELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.5ms)[0m  SELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)
+  Rendered posts/index.html.erb within layouts/application (15.7ms)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 1.8ms)
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"posts", :id=>nil} missing required keys: [:id]):
+    13:             <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    14:           </div>
+    15:           <div class="card-action">
+    16:             <a><%= link_to 'Read More...', post %></a>
+    17:           </div>
+    18:         </div>
+    19:       </div>
+  app/views/posts/index.html.erb:16:in `block in _app_views_posts_index_html_erb__3988171748526134728_70078868951220'
+  app/views/posts/index.html.erb:4:in `_app_views_posts_index_html_erb__3988171748526134728_70078868951220'
+
+
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.9ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (29.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (20.0ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/return/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (40.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:44:51 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (1.2ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (0.6ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (34.1ms)
+Completed 200 OK in 1518ms (Views: 1502.1ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at 2016-09-24 00:45:04 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.3ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (0.5ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (2.8ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  Rendered posts/_editform.html.erb (24.0ms)
+  Rendered posts/edit.html.erb within layouts/application (26.1ms)
+  [1m[35mUser Load (0.7ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Completed 200 OK in 174ms (Views: 162.2ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at 2016-09-24 00:45:07 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 3 LIMIT 1[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (2.1ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (0.7ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  Rendered posts/_editform.html.erb (9.0ms)
+  Rendered posts/edit.html.erb within layouts/application (9.8ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+Completed 200 OK in 130ms (Views: 125.1ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-09-24 00:45:16 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT `posts`.* FROM `posts`[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (0.5ms)[0m  SELECT `taggings`.* FROM `taggings` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post'
+  [1m[36mActsAsTaggableOn::Tag Load (0.7ms)[0m  [1mSELECT `tags`.* FROM `tags` INNER JOIN `taggings` ON `tags`.`id` = `taggings`.`tag_id` WHERE `taggings`.`taggable_id` = 3 AND `taggings`.`taggable_type` = 'Post' AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 164ms (Views: 159.1ms | ActiveRecord: 2.1ms)

@@ -5,6 +5,8 @@
 		<%= image_tag @post.image.url, class: "materialboxed" %>
 		<h3><%= @post.title %></h3>
 		<%= markdown(@post.body) %>
+        <h5><%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></h5>
+
 		<% if user_signed_in? %>
 			<%= link_to 'Edit', edit_post_path(@post), class: "waves-effect waves-light btn" %> 
 		<% end %>
