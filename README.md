@@ -1,6 +1,8 @@
 # blogino
 An open-source blog script written in Ruby on Rails and Materialize CSS
 
+## Please update all the gems because there are known vulnerabilities on some used gems such as paperclip.
+
 ## Features
 - Responsive 
 - Multiple Users
